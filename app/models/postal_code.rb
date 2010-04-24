@@ -1,6 +1,8 @@
 class PostalCode < ActiveRecord::Base
   validates_format_of :code, :with => /[^\s\dDFIOQUWZ][0-9][^\s\dDFIOQU][0-9][^\s\dDFIOQU][0-9]/i
   
+  has_many :postal_code_assignments
+  
   def initialize(params)
     params[:code] = self.class.clean(params[:code])
     super
