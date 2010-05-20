@@ -11,7 +11,7 @@ class PostalCodesControllerTest < ActionController::TestCase
 
   context "on GET to search with a VALID postal code that is not yet cached" do
     setup do
-      PostalCode.expects(:scrape)
+      PostalCode.any_instance.expects(:edid).returns({:code => "A1A1A1", :edid => "10007"})
       get :search, :code => "A1A1A1"
     end
     

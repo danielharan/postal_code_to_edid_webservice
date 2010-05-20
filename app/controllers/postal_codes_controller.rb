@@ -1,6 +1,6 @@
 class PostalCodesController < ApplicationController
   def search
-    code = PostalCode.find_or_create_by_code(params[:code])
+    code = PostalCode.find_or_create_via_api(params[:code])
 
     if ! code.valid?
       render :text => "postal code invalid", :layout => false, :status => 404
