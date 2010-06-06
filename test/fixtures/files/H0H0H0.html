@@ -1,0 +1,436 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+		<TITLE> Voter Information Service - </TITLE>
+<META content="Microsoft Visual Studio 7.0" name=GENERATOR>
+<META content=VB name=CODE_LANGUAGE>
+<META content=JavaScript name=vs_defaultClientScript>
+<META content=http://schemas.microsoft.com/intellisense/ie5 name=vs_targetSchema>
+<SCRIPT src="javascript/general.js" type=text/javascript></SCRIPT>
+<LINK href="voterinfoservice.css" type=text/css rel=STYLESHEET >
+<SCRIPT src="javascript/JavaScript.js" type=text/javascript></SCRIPT>
+
+<SCRIPT language=javascript>
+			/* Functions that handles ENTER Key on Postal Code. */
+			function HandleEnterKey_PC()
+			{	
+				var sKey = event.keyCode; 
+				if(sKey == 13)
+					{
+					__doPostBack('btnSearch_PostalCode','');
+					event.keyCode = 0
+				return false;
+				}	
+			}	
+		</SCRIPT>
+
+<SCRIPT language=javascript>
+			function HandleEnterKey_Other()
+			{	
+				var sKey = event.keyCode; 
+				if(sKey == 13)
+					{
+					__doPostBack('btnSearch_Other','');
+					event.keyCode = 0
+				return false;
+				}	
+			}	
+		</SCRIPT>
+</HEAD>
+<BODY text=#000000 bottomMargin=0 vLink=#990134 aLink=#ff0000 link=#990134 
+bgColor=#ffffff leftMargin=0 topMargin=0 rightMargin=0 
+marginwidth="0">
+<form name="electorinfo" method="post" action="FindED.aspx?PC=H0H0H0&amp;image.x=0&amp;image.y=0" id="electorinfo">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5Mzg1MzA0MTIPZBYCZg9kFggCAg8PFgQeBFRleHQFqQFUaGUgVm90ZXIgSW5mb3JtYXRpb24gU2VydmljZSBwcm92aWRlcyBpbmZvcm1hdGlvbiBvbiB5b3VyIGVsZWN0b3JhbCBkaXN0cmljdCBhbmQgbWVtYmVyIG9mIFBhcmxpYW1lbnQuICBTZWxlY3Qgb25lIG9mIHRoZSBvcHRpb25zIGJlbG93IHRvIGZpbmQgeW91ciBlbGVjdG9yYWwgZGlzdHJpY3QuHgdWaXNpYmxlaGRkAgYPFgIfAWgWBmYPZBYCAgEPZBYEZg8PFgIfAAUWU2VhcmNoIGJ5IHBvc3RhbCBjb2RlOmRkAgQPDxYCHwAFB1NlYXJjaDoWAh4LT25Nb3VzZU92ZXIFGHRoaXMuY2xhc3NOYW1lPSdjdXJzb3InO2QCAQ9kFgICAQ9kFgJmDw8WAh8ABQYtIG9yIC1kZAICD2QWAgIBD2QWCmYPDxYCHwAFB1NlYXJjaDpkZAICDxBkEBUFFWRpc3RyaWN0cyBieSBwcm92aW5jZQxieSBjYW5kaWRhdGUNYnkgdXNpbmcgbWFwcwpieSBrZXl3b3JkCmJ5IGFkZHJlc3MVBQEyATABMQEzATUUKwMFZ2dnZ2cWAWZkAgQPDxYCHwAFA2ZvcmRkAgYPEA8WBh4NRGF0YVRleHRGaWVsZAUETkFNRR4ORGF0YVZhbHVlRmllbGQFC1BST1ZJTkNFX0lEHgtfIURhdGFCb3VuZGdkEBUNGU5ld2ZvdW5kbGFuZCBhbmQgTGFicmFkb3IUUHJpbmNlIEVkd2FyZCBJc2xhbmQLTm92YSBTY290aWENTmV3IEJydW5zd2ljawZRdWViZWMHT250YXJpbwhNYW5pdG9iYQxTYXNrYXRjaGV3YW4HQWxiZXJ0YRBCcml0aXNoIENvbHVtYmlhBVl1a29uFU5vcnRod2VzdCBUZXJyaXRvcmllcwdOdW5hdnV0FQ0FMTA7TkwFMTE7UEUFMTI7TlMFMTM7TkIFMjQ7UUMFMzU7T04FNDY7TUIFNDc7U0sFNDg7QUIFNTk7QkMFNjA7WVQFNjE7TlQFNjI7TlUUKwMNZ2dnZ2dnZ2dnZ2dnZxYBZmQCCA8PFgIfAAUHU2VhcmNoOhYCHwIFGHRoaXMuY2xhc3NOYW1lPSdjdXJzb3InO2QCCA8PFgIfAWdkFiACAQ8PFgIfAAUdQWRkcmVzcyBvZiBvcmRpbmFyeSByZXNpZGVuY2VkZAIFDw8WAh8ABQZOdW1iZXJkZAIJDw8WAh8ABQ1OdW1iZXIgc3VmZml4ZGQCDQ8PFgIfAAUPVW5pdC9TdWl0ZS9BcHQuZGQCEQ8PFgIfAAULU3RyZWV0IG5hbWVkZAITDxAPFgQfAwUOU1RfVFlQX0VDX0RFU0MfBWdkEBWlAQAFQWJiZXkGQWNjZXNzBUFjcmVzBEFpcmUGQWxsw6llBUFsbGV5CUF1dG9yb3V0ZQZBdmVudWUHQmFycmFnZQNCYXkFQmVhY2gEQmVuZARCbG9jBUJsb2NrCUJvdWxldmFyZAVCb3VyZwVCcm9vawdCeS1wYXNzBUJ5d2F5BkNhbXB1cwRDYXBlBkNhcnLDqQlDYXJyZWZvdXIGQ2VudHJlBkNlcmNsZQVDaGFzZQZDaGVtaW4GQ2lyY2xlB0NpcmN1aXQFQ2xvc2UGQ29tbW9uCkNvbmNlc3Npb24HQ29ybmVycwVDw7R0ZQRDb3VyBUNvdXJzBUNvdXJ0BENvdmUIQ3Jlc2NlbnQFQ3Jlc3QFQ3JvZnQJQ3JvaXNzYW50CENyb3NzaW5nCkNyb3Nzcm9hZHMKQ3VsLWRlLXNhYwREYWxlBERlbGwIRGVzc2VydGUJRGl2ZXJzaW9uBURvd25zBURyaXZlEERyb2l0IGRlIHBhc3NhZ2UKw4ljaGFuZ2V1cgNFbmQJRXNwbGFuYWRlB0VzdGF0ZXMKRXhwcmVzc3dheQlFeHRlbnNpb24ERmFybQVGaWVsZAZGb3Jlc3QHRnJlZXdheQVGcm9udAdHYXJkZW5zBEdhdGUFR2xhZGUER2xlbgVHcmVlbgdHcm91bmRzBUdyb3ZlB0hhcmJvdXIFSGF2ZW4FSGVhdGgHSGVpZ2h0cwlIaWdobGFuZHMHSGlnaHdheQRIaWxsBkhvbGxvdwTDjmxlB0ltcGFzc2UFSW5sZXQGSXNsYW5kA0tleQVLbm9sbAdMYW5kaW5nBExhbmUHTGFuZXdheQZMaW1pdHMETGluZQRMaW5rB0xvb2tvdXQETG9vcARNYWxsBU1hbm9yBE1hemUGTWVhZG93BE1ld3MHTW9udMOpZQRNb29yBU1vdW50CE1vdW50YWluB09yY2hhcmQGUGFyYWRlBFBhcmMEUGFyawdQYXJrd2F5B1Bhc3NhZ2UEUGF0aAdQYXRod2F5BFBlYWsFUGluZXMFUGxhY2UHUGxhdGVhdQVQbGF6YQVQb2ludAZQb2ludGUEUG9ydAdQcml2YXRlCVByb21lbmFkZQRRdWFpBFF1YXkEUmFtcARSYW5nBVJhbmdlBVJlYWNoBVJpZGdlDFJpZ2h0IG9mIHdheQRSaXNlBFJvYWQKUm9uZCBwb2ludAVSb3V0ZQNSb3cDUnVlBlJ1ZWxsZQhSdWlzc2VhdQNSdW4HU2VjdGlvbgdTZW50aWVyCFNpZGVyb2FkBlNxdWFyZQZTdHJlZXQGU3Ryb2xsC1N1YmRpdmlzaW9uB1RlcnJhY2UIVGVycmFzc2UHVGhpY2tldAZUb3dlcnMIVG93bmxpbmUFVHJhY2UFVHJhaWwFVHJ1bmsJVHVybmFib3V0BFZhbGUDVmlhBFZpZXcHVmlsbGFnZQZWaWxsYXMFVmlzdGEEVm9pZQRXYWxrA1dheQVXaGFyZgRXb29kBFd5bmQVpQEABUFiYmV5BkFjY2VzcwVBY3JlcwRBaXJlBkFsbMOpZQVBbGxleQlBdXRvcm91dGUGQXZlbnVlB0JhcnJhZ2UDQmF5BUJlYWNoBEJlbmQEQmxvYwVCbG9jawlCb3VsZXZhcmQFQm91cmcFQnJvb2sHQnktcGFzcwVCeXdheQZDYW1wdXMEQ2FwZQZDYXJyw6kJQ2FycmVmb3VyBkNlbnRyZQZDZXJjbGUFQ2hhc2UGQ2hlbWluBkNpcmNsZQdDaXJjdWl0BUNsb3NlBkNvbW1vbgpDb25jZXNzaW9uB0Nvcm5lcnMFQ8O0dGUEQ291cgVDb3VycwVDb3VydARDb3ZlCENyZXNjZW50BUNyZXN0BUNyb2Z0CUNyb2lzc2FudAhDcm9zc2luZwpDcm9zc3JvYWRzCkN1bC1kZS1zYWMERGFsZQREZWxsCERlc3NlcnRlCURpdmVyc2lvbgVEb3ducwVEcml2ZRBEcm9pdCBkZSBwYXNzYWdlCsOJY2hhbmdldXIDRW5kCUVzcGxhbmFkZQdFc3RhdGVzCkV4cHJlc3N3YXkJRXh0ZW5zaW9uBEZhcm0FRmllbGQGRm9yZXN0B0ZyZWV3YXkFRnJvbnQHR2FyZGVucwRHYXRlBUdsYWRlBEdsZW4FR3JlZW4HR3JvdW5kcwVHcm92ZQdIYXJib3VyBUhhdmVuBUhlYXRoB0hlaWdodHMJSGlnaGxhbmRzB0hpZ2h3YXkESGlsbAZIb2xsb3cEw45sZQdJbXBhc3NlBUlubGV0BklzbGFuZANLZXkFS25vbGwHTGFuZGluZwRMYW5lB0xhbmV3YXkGTGltaXRzBExpbmUETGluawdMb29rb3V0BExvb3AETWFsbAVNYW5vcgRNYXplBk1lYWRvdwRNZXdzB01vbnTDqWUETW9vcgVNb3VudAhNb3VudGFpbgdPcmNoYXJkBlBhcmFkZQRQYXJjBFBhcmsHUGFya3dheQdQYXNzYWdlBFBhdGgHUGF0aHdheQRQZWFrBVBpbmVzBVBsYWNlB1BsYXRlYXUFUGxhemEFUG9pbnQGUG9pbnRlBFBvcnQHUHJpdmF0ZQlQcm9tZW5hZGUEUXVhaQRRdWF5BFJhbXAEUmFuZwVSYW5nZQVSZWFjaAVSaWRnZQxSaWdodCBvZiB3YXkEUmlzZQRSb2FkClJvbmQgcG9pbnQFUm91dGUDUm93A1J1ZQZSdWVsbGUIUnVpc3NlYXUDUnVuB1NlY3Rpb24HU2VudGllcghTaWRlcm9hZAZTcXVhcmUGU3RyZWV0BlN0cm9sbAtTdWJkaXZpc2lvbgdUZXJyYWNlCFRlcnJhc3NlB1RoaWNrZXQGVG93ZXJzCFRvd25saW5lBVRyYWNlBVRyYWlsBVRydW5rCVR1cm5hYm91dARWYWxlA1ZpYQRWaWV3B1ZpbGxhZ2UGVmlsbGFzBVZpc3RhBFZvaWUEV2FsawNXYXkFV2hhcmYEV29vZARXeW5kFCsDpQFnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZAIVDw8WAh8ABQtTdHJlZXQgdHlwZWRkAhcPEA8WBh8DBQ1TVF9EUkNUTl9ERVNDHwQFDFNUX0RSQ1ROX0NERR8FZ2QQFREABEVhc3QDRXN0BU5vcnRoBE5vcmQKTm9ydGgtRWFzdAhOb3JkLUVzdApOb3J0aC1XZXN0Ck5vcmQtT3Vlc3QFU291dGgDU3VkClNvdXRoLUVhc3QHU3VkLUVzdApTb3V0aC1XZXN0CVN1ZC1PdWVzdARXZXN0BU91ZXN0FREAA0UgZQNFIGYDTiBlA04gZgNORWUDTkVmA05XZQNOV2YDUyBlA1MgZgNTRWUDU0VmA1NXZQNTV2YDVyBlA1cgZhQrAxFnZ2dnZ2dnZ2dnZ2dnZ2dnZ2RkAhkPDxYCHwAFCURpcmVjdGlvbmRkAh0PDxYCHwAFDENpdHkgb3IgdG93bmRkAh8PEA8WBh8DBQROQU1FHwQFC1BST1ZJTkNFX0lEHwVnZBAVDRlOZXdmb3VuZGxhbmQgYW5kIExhYnJhZG9yFFByaW5jZSBFZHdhcmQgSXNsYW5kC05vdmEgU2NvdGlhDU5ldyBCcnVuc3dpY2sGUXVlYmVjB09udGFyaW8ITWFuaXRvYmEMU2Fza2F0Y2hld2FuB0FsYmVydGEQQnJpdGlzaCBDb2x1bWJpYQVZdWtvbhVOb3J0aHdlc3QgVGVycml0b3JpZXMHTnVuYXZ1dBUNBTEwO05MBTExO1BFBTEyO05TBTEzO05CBTI0O1FDBTM1O09OBTQ2O01CBTQ3O1NLBTQ4O0FCBTU5O0JDBTYwO1lUBTYxO05UBTYyO05VFCsDDWdnZ2dnZ2dnZ2dnZ2dkZAIhDw8WAh8ABQhQcm92aW5jZWRkAiUPDxYCHwAFC1Bvc3RhbCBjb2RlZGQCJw8PFgIfAAURU2VhcmNoIGJ5IGFkZHJlc3MWAh8CBRh0aGlzLmNsYXNzTmFtZT0nY3Vyc29yJztkAikPDxYCHwAFMSoqIFBsZWFzZSBlbnRlciB0aGUgb2ZmaWNpYWwgc3RyZWV0IG5hbWUgYW5kIHR5cGVkZAIrDw8WAh8ABRIqIE1hbmRhdG9yeSBmaWVsZHNkZAIKDxYCHwFoFg5mD2QWAmYPZBYCAgEPDxYEHwAFDUluc3RydWN0aW9uczofAWhkZAIBD2QWBGYPZBYCZg8PFgIfAAUWU2VhcmNoIGJ5IHBvc3RhbCBjb2RlOmRkAgEPZBYCZg8PFgIfAAU+VHlwZSBpbiB5b3VyIGhvbWUgcG9zdGFsIGNvZGUsIHRoZW4gY2xpY2sgdGhlICJTZWFyY2giIGJ1dHRvbi5kZAICD2QWBGYPZBYCZg8PFgIfAAUUU2VhcmNoIGJ5IGNhbmRpZGF0ZTpkZAIBD2QWAmYPDxYCHwAFwwFDaG9vc2UgYSBwcm92aW5jZSBmcm9tIHRoZSByaWdodCBwdWxsLWRvd24gbWVudSwgdGhlbiBjbGljayB0aGUgIlNlYXJjaCIgYnV0dG9uLiBBIGxpc3Qgb2YgY2FuZGlkYXRlcyBmb3IgdGhhdCBwcm92aW5jZSB3aWxsIGJlIGRpc3BsYXllZC4gQ2hvb3NlIHlvdXIgZWxlY3RvcmFsIGRpc3RyaWN0IGJ5IHNlbGVjdGluZyBhIGNhbmRpZGF0ZS5kZAIDD2QWBGYPZBYCZg8PFgIfAAUVU2VhcmNoIGJ5IHVzaW5nIG1hcHM6ZGQCAQ9kFgJmDw8WAh8ABagBQ2hvb3NlIGEgcHJvdmluY2UgZnJvbSB0aGUgcmlnaHQgcHVsbC1kb3duIG1lbnUsIHRoZW4gY2xpY2sgdGhlICJTZWFyY2giIGJ1dHRvbi4gWW91IGNhbiB0aGVuIGNsaWNrIG9uIGEgcmlkaW5nIG9yIGNpdHkgb24gdGhlIG1hcCBzaG93biB0byBkaXNwbGF5IGEgbW9yZSBkZXRhaWxlZCBtYXAuZGQCBA9kFgRmD2QWAmYPDxYCHwAFHVNlYXJjaCBkaXN0cmljdHMgYnkgcHJvdmluY2U6ZGQCAQ9kFgJmDw8WAh8ABbMBQ2hvb3NlIGEgcHJvdmluY2UgZnJvbSB0aGUgcmlnaHQgcHVsbC1kb3duIG1lbnUsIHRoZW4gY2xpY2sgdGhlICJTZWFyY2giIGJ1dHRvbi4gQSBsaXN0IG9mIGVsZWN0b3JhbCBkaXN0cmljdHMgZm9yIHRoYXQgcHJvdmluY2Ugd2lsbCBiZSBkaXNwbGF5ZWQuIENob29zZSB5b3VyIGVsZWN0b3JhbCBkaXN0cmljdC5kZAIFD2QWBGYPZBYCZg8PFgIfAAUSU2VhcmNoIGJ5IGtleXdvcmQ6ZGQCAQ9kFgJmDw8WAh8ABYIBQ2hvb3NlIGEgcHJvdmluY2UgZnJvbSB0aGUgcmlnaHQgcHVsbC1kb3duIG1lbnUsIGNsaWNrIHRoZSAiU2VhcmNoIiBidXR0b24sIHRoZW4gZm9sbG93IHRoZSBhZGRpdGlvbmFsIGluc3RydWN0aW9ucyBvbiB0aGUgc2NyZWVuLmRkAgYPZBYEZg9kFgJmDw8WAh8ABRJTZWFyY2ggYnkgYWRkcmVzczpkZAIBD2QWAmYPDxYCHwAFgAFDaG9vc2UgYSBwcm92aW5jZSBmcm9tIHRoZSByaWdodCBwdWxsLWRvd24gbWVudSwgY2xpY2sgdGhlICJTZWFyY2giIGJ1dHRvbiwgdGhlbiB0eXBlIGluIHRoZSBhZGRyZXNzIG9mIHlvdXIgb3JkaW5hcnkgcmVzaWRlbmNlLmRkZF/tKZ+rvlUZaOa2B5djPieHoRGr" />
+</div>
+
+<!--HEADER BEGIN-->
+<table cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <tr>
+    <td vAlign=bottom width=145 rowSpan=2><IMG height=50 alt="Elections Canada" src="images/r1c1.gif" width=114 border=0 ></td>
+    <td vAlign=bottom width="100%" background="images/r1c2.gif" rowSpan=2><IMG height=50 alt=spacer src="images/r1c2.gif" width="100%" border=0 ></td>
+    <td vAlign=bottom align=right width=445 background=images/r1c3.gif height=35><IMG src="images/vis_logo.gif" align=absMiddle border=0 >&nbsp;<span id="header_lblVIS" style="font-family:Arial Black;font-size:12pt;">Voter Information Service</span>&nbsp;</td></tr>
+  <tr>
+    <td width=445><IMG height=15 alt=spacer src="images/r2c3.gif" width=445 border=0 ></td></tr></table>
+<!--HEADER END-->
+<!--TAB MENU BEGIN-->
+<table cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <tr>
+    <td class=Banner align=center width=0% bgColor=#cbcb98>
+		<a href="/scripts/pss/FindED.aspx?PC=H0H0H0&image.x=0&image.y=0?L=f">
+			
+				                                          Français
+			
+		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+			<a href="http://www.elections.ca/home.asp?textonly=false">Home</a>
+		
+		</td>
+    <td align=center width="100%" bgColor=#cbcb98></td>
+    <td class=Banner align=center width=0% bgColor=#cbcb98>
+		<a href="FindED.aspx?L=e&ED=&EV=&EV_TYPE=&PC=&Prov=&ProvID=&MapID=&QID=-1&PageID=20&TPageID=">
+		                                                Start New Search
+		</a>
+	</td>
+    <td class="BannerDisabled" align=center width=0% bgColor=#cbcb98>
+		                                                FAQ
+	</td>
+    <td bgColor=#cbcb98>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td class="BannerDisabled" align=center width=0% bgColor=#cbcb98>
+		                                                Map
+	</td>
+    <td class="BannerDisabled" 
+    align=center width=0% bgColor=#cbcb98>
+				                                                                                                                                    Candidates</td>
+    <td class="BannerDisabled" 
+    align=center width=0% bgColor=#cbcb98>
+				                                                                                                                                    Returning Officer</td>
+    <td class="BannerDisabled" 
+    align=center width=0% bgColor=#cbcb98>
+				                                                                                                                                    Profile</td>
+    <td class="BannerDisabled" 
+    align=center width=0% bgColor=#cbcb98>
+				                                                                                                                                    Past Results</td>
+    <td align=center width=0% bgColor=#cbcb98>&nbsp;</td></tr>
+  <tr>
+    <td width=0%><IMG height=20 alt=spacer src="images/r2c1.gif" width=145 border=0></td>
+    <td width="100%" background="images/r2c2.gif"><IMG height=20 alt=spacer src="images/r2c2.gif" width="100%" border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab_selected.gif" width=75 border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab.gif" width=75 border=0></td>
+    <td><IMG height=20 alt=spacer src="images/r2c1.gif" width=25 border=0 ></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab.gif" width=75 border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab.gif" width=75 border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab.gif" width=75 border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab.gif" width=75 border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab.gif" width=75 border=0></td>
+    <td width=0%><IMG height=20 alt=tab src="images/tab_end.gif" width=10 border=0 ></td></tr></table>
+<table cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <tr>
+    <td width="100%"><IMG height=5 src="images/10x10_Transparent.gif" width=10 border=0 ></td></tr></table>
+<!--TAB MENU END-->
+<!--FORM HEADER START-->
+
+<!--FORM HEADER END-->
+
+<TABLE id=contentTable cellSpacing=0 cellPadding=0 width="90%" align=center 
+border=0>
+  <TR>
+    <TD></TD></TR>
+  <TR>
+    <TD align=left>
+<!-- begin pollingStationDisplay -->
+<table id="pollingStation" width="100%" align="left" border="0">
+	<TR>
+		<TD id="myMessages_TDImage" nowrap="nowrap" valign="top">
+			<img id="myMessages_imgMsgType" src="images/information2.gif" style="border-width:0px;" />
+			&nbsp;
+		</TD>
+
+		<td valign="middle" width="100%">
+			<span id="myMessages_lblMessage" class="Messages">Your postal code information did not identify a valid electoral district. Please enter your address below <u><b> without the postal code</b></u>.</span>
+		</td>
+	</TR>
+</table>
+</TD></TR>
+  <TR>
+    <TD align=center><BR>
+      </TD></TR>
+  <TR>
+    <TD align=center></TD></TR>
+  <TR>
+    <TD>
+<TABLE id="addressInput" cellSpacing="1" cellPadding="1" width="100%" align="left" border="0" style="BORDER-RIGHT: gainsboro thin solid; BORDER-TOP: gainsboro thin solid; BORDER-LEFT: gainsboro thin solid; BORDER-BOTTOM: gainsboro thin solid">
+	<TR>
+		<TD colspan="3" align="left">
+			<span id="myAddressSearch_lblFrmAddressInfo" class="bold">Address of ordinary residence</span>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<input name="myAddressSearch$txtCivicNumber" type="text" id="myAddressSearch_txtCivicNumber" style="width:74px;" /><br>
+			<small>(<span id="myAddressSearch_lblFrmCivicNumber">Number</span>)</small></TD>
+		<TD>
+			<input name="myAddressSearch$txtCivicNbrSfx" type="text" id="myAddressSearch_txtCivicNbrSfx" style="width:98px;" /><br>
+			<small>(<span id="myAddressSearch_lblFrmCivicNbrSfx">Number suffix</span>)</small></TD>
+		<TD>
+			<input name="myAddressSearch$txtUnitNumber" type="text" id="myAddressSearch_txtUnitNumber" style="width:81px;" /><br>
+			<small>(<span id="myAddressSearch_lblFrmUnitNumber">Unit/Suite/Apt.</span>)</small></TD>
+	</TR>
+	<TR>
+		<TD>
+			<input name="myAddressSearch$txtStreetName" type="text" id="myAddressSearch_txtStreetName" style="width:143px;" />**<BR>
+			<SMALL>(<span id="myAddressSearch_lblFrmStreetName">Street name</span>)</SMALL></TD>
+		<TD>
+			<select name="myAddressSearch$dropStreetType" id="myAddressSearch_dropStreetType" style="width:119px;">
+	<option selected="selected" value=""></option>
+	<option value="Abbey">Abbey</option>
+	<option value="Access">Access</option>
+	<option value="Acres">Acres</option>
+	<option value="Aire">Aire</option>
+	<option value="Allée">All&#233;e</option>
+	<option value="Alley">Alley</option>
+	<option value="Autoroute">Autoroute</option>
+	<option value="Avenue">Avenue</option>
+	<option value="Barrage">Barrage</option>
+	<option value="Bay">Bay</option>
+	<option value="Beach">Beach</option>
+	<option value="Bend">Bend</option>
+	<option value="Bloc">Bloc</option>
+	<option value="Block">Block</option>
+	<option value="Boulevard">Boulevard</option>
+	<option value="Bourg">Bourg</option>
+	<option value="Brook">Brook</option>
+	<option value="By-pass">By-pass</option>
+	<option value="Byway">Byway</option>
+	<option value="Campus">Campus</option>
+	<option value="Cape">Cape</option>
+	<option value="Carré">Carr&#233;</option>
+	<option value="Carrefour">Carrefour</option>
+	<option value="Centre">Centre</option>
+	<option value="Cercle">Cercle</option>
+	<option value="Chase">Chase</option>
+	<option value="Chemin">Chemin</option>
+	<option value="Circle">Circle</option>
+	<option value="Circuit">Circuit</option>
+	<option value="Close">Close</option>
+	<option value="Common">Common</option>
+	<option value="Concession">Concession</option>
+	<option value="Corners">Corners</option>
+	<option value="Côte">C&#244;te</option>
+	<option value="Cour">Cour</option>
+	<option value="Cours">Cours</option>
+	<option value="Court">Court</option>
+	<option value="Cove">Cove</option>
+	<option value="Crescent">Crescent</option>
+	<option value="Crest">Crest</option>
+	<option value="Croft">Croft</option>
+	<option value="Croissant">Croissant</option>
+	<option value="Crossing">Crossing</option>
+	<option value="Crossroads">Crossroads</option>
+	<option value="Cul-de-sac">Cul-de-sac</option>
+	<option value="Dale">Dale</option>
+	<option value="Dell">Dell</option>
+	<option value="Desserte">Desserte</option>
+	<option value="Diversion">Diversion</option>
+	<option value="Downs">Downs</option>
+	<option value="Drive">Drive</option>
+	<option value="Droit de passage">Droit de passage</option>
+	<option value="Échangeur">&#201;changeur</option>
+	<option value="End">End</option>
+	<option value="Esplanade">Esplanade</option>
+	<option value="Estates">Estates</option>
+	<option value="Expressway">Expressway</option>
+	<option value="Extension">Extension</option>
+	<option value="Farm">Farm</option>
+	<option value="Field">Field</option>
+	<option value="Forest">Forest</option>
+	<option value="Freeway">Freeway</option>
+	<option value="Front">Front</option>
+	<option value="Gardens">Gardens</option>
+	<option value="Gate">Gate</option>
+	<option value="Glade">Glade</option>
+	<option value="Glen">Glen</option>
+	<option value="Green">Green</option>
+	<option value="Grounds">Grounds</option>
+	<option value="Grove">Grove</option>
+	<option value="Harbour">Harbour</option>
+	<option value="Haven">Haven</option>
+	<option value="Heath">Heath</option>
+	<option value="Heights">Heights</option>
+	<option value="Highlands">Highlands</option>
+	<option value="Highway">Highway</option>
+	<option value="Hill">Hill</option>
+	<option value="Hollow">Hollow</option>
+	<option value="Île">&#206;le</option>
+	<option value="Impasse">Impasse</option>
+	<option value="Inlet">Inlet</option>
+	<option value="Island">Island</option>
+	<option value="Key">Key</option>
+	<option value="Knoll">Knoll</option>
+	<option value="Landing">Landing</option>
+	<option value="Lane">Lane</option>
+	<option value="Laneway">Laneway</option>
+	<option value="Limits">Limits</option>
+	<option value="Line">Line</option>
+	<option value="Link">Link</option>
+	<option value="Lookout">Lookout</option>
+	<option value="Loop">Loop</option>
+	<option value="Mall">Mall</option>
+	<option value="Manor">Manor</option>
+	<option value="Maze">Maze</option>
+	<option value="Meadow">Meadow</option>
+	<option value="Mews">Mews</option>
+	<option value="Montée">Mont&#233;e</option>
+	<option value="Moor">Moor</option>
+	<option value="Mount">Mount</option>
+	<option value="Mountain">Mountain</option>
+	<option value="Orchard">Orchard</option>
+	<option value="Parade">Parade</option>
+	<option value="Parc">Parc</option>
+	<option value="Park">Park</option>
+	<option value="Parkway">Parkway</option>
+	<option value="Passage">Passage</option>
+	<option value="Path">Path</option>
+	<option value="Pathway">Pathway</option>
+	<option value="Peak">Peak</option>
+	<option value="Pines">Pines</option>
+	<option value="Place">Place</option>
+	<option value="Plateau">Plateau</option>
+	<option value="Plaza">Plaza</option>
+	<option value="Point">Point</option>
+	<option value="Pointe">Pointe</option>
+	<option value="Port">Port</option>
+	<option value="Private">Private</option>
+	<option value="Promenade">Promenade</option>
+	<option value="Quai">Quai</option>
+	<option value="Quay">Quay</option>
+	<option value="Ramp">Ramp</option>
+	<option value="Rang">Rang</option>
+	<option value="Range">Range</option>
+	<option value="Reach">Reach</option>
+	<option value="Ridge">Ridge</option>
+	<option value="Right of way">Right of way</option>
+	<option value="Rise">Rise</option>
+	<option value="Road">Road</option>
+	<option value="Rond point">Rond point</option>
+	<option value="Route">Route</option>
+	<option value="Row">Row</option>
+	<option value="Rue">Rue</option>
+	<option value="Ruelle">Ruelle</option>
+	<option value="Ruisseau">Ruisseau</option>
+	<option value="Run">Run</option>
+	<option value="Section">Section</option>
+	<option value="Sentier">Sentier</option>
+	<option value="Sideroad">Sideroad</option>
+	<option value="Square">Square</option>
+	<option value="Street">Street</option>
+	<option value="Stroll">Stroll</option>
+	<option value="Subdivision">Subdivision</option>
+	<option value="Terrace">Terrace</option>
+	<option value="Terrasse">Terrasse</option>
+	<option value="Thicket">Thicket</option>
+	<option value="Towers">Towers</option>
+	<option value="Townline">Townline</option>
+	<option value="Trace">Trace</option>
+	<option value="Trail">Trail</option>
+	<option value="Trunk">Trunk</option>
+	<option value="Turnabout">Turnabout</option>
+	<option value="Vale">Vale</option>
+	<option value="Via">Via</option>
+	<option value="View">View</option>
+	<option value="Village">Village</option>
+	<option value="Villas">Villas</option>
+	<option value="Vista">Vista</option>
+	<option value="Voie">Voie</option>
+	<option value="Walk">Walk</option>
+	<option value="Way">Way</option>
+	<option value="Wharf">Wharf</option>
+	<option value="Wood">Wood</option>
+	<option value="Wynd">Wynd</option>
+
+</select>**<BR>
+			<SMALL>(<span id="myAddressSearch_lblFrmStreetType">Street type</span>)</SMALL></TD>
+		<TD>
+			<select name="myAddressSearch$dropStreetDir" id="myAddressSearch_dropStreetDir">
+	<option selected="selected" value=""></option>
+	<option value="E e">East</option>
+	<option value="E f">Est</option>
+	<option value="N e">North</option>
+	<option value="N f">Nord</option>
+	<option value="NEe">North-East</option>
+	<option value="NEf">Nord-Est</option>
+	<option value="NWe">North-West</option>
+	<option value="NWf">Nord-Ouest</option>
+	<option value="S e">South</option>
+	<option value="S f">Sud</option>
+	<option value="SEe">South-East</option>
+	<option value="SEf">Sud-Est</option>
+	<option value="SWe">South-West</option>
+	<option value="SWf">Sud-Ouest</option>
+	<option value="W e">West</option>
+	<option value="W f">Ouest</option>
+
+</select><br>
+			<SMALL>(<span id="myAddressSearch_lblFrmDirection">Direction</span>)</SMALL></TD>
+	</TR>
+	<TR>
+		<TD>
+			<input name="myAddressSearch$txtCityTown" type="text" id="myAddressSearch_txtCityTown" style="width:160px;" /> 
+      *
+			<br>
+			<SMALL>(<span id="myAddressSearch_lblFrmCityorTown">City or town</span>)</SMALL></TD>
+		<TD vAlign=bottom>
+			<select name="myAddressSearch$dropProvince" id="myAddressSearch_dropProvince">
+	<option value="10;NL">Newfoundland and Labrador</option>
+	<option value="11;PE">Prince Edward Island</option>
+	<option value="12;NS">Nova Scotia</option>
+	<option value="13;NB">New Brunswick</option>
+	<option value="24;QC">Quebec</option>
+	<option value="35;ON">Ontario</option>
+	<option value="46;MB">Manitoba</option>
+	<option value="47;SK">Saskatchewan</option>
+	<option value="48;AB">Alberta</option>
+	<option value="59;BC">British Columbia</option>
+	<option value="60;YT">Yukon</option>
+	<option value="61;NT">Northwest Territories</option>
+	<option value="62;NU">Nunavut</option>
+
+</select>*
+			<br>
+			<SMALL>(<span id="myAddressSearch_lblFrmProvince">Province</span>)</SMALL>
+		</TD>
+		<td></td>
+	</TR>
+	<TR>
+		<TD vAlign=middle><input name="myAddressSearch$txtPostalCode" type="text" maxlength="7" id="myAddressSearch_txtPostalCode" style="width:75px;" /><BR>
+			<SMALL>(<span id="myAddressSearch_lblFrmPostalCode">Postal code</span>)</SMALL>
+		</TD>
+		<TD vAlign=middle>
+			<input type="submit" name="myAddressSearch$btnSearch" value="Search by address" onclick="setPointer();" id="myAddressSearch_btnSearch" class="button" OnMouseOver="this.className='cursor';" /></TD>
+		<td vAlign=middle></td>
+	</TR>
+	<tr>
+		<td colspan="3">
+			<br>
+			<span id="myAddressSearch_lblOfficialName" style="color:#990000;">** Please enter the official street name and type</span><br>
+			<span id="myAddressSearch_lblMandatory" style="color:#990000;">* Mandatory fields</span>
+		</td>
+	</tr>
+</TABLE>
+</TD></TR>
+  <TR>
+    <TD>
+		<br><br>
+      </TD></TR></TABLE></TD></TR></TABLE><br>
+<!--*FOOTER TABLE*-->
+<table align="center" border="0" width="100%" cellspacing="2" cellpadding="0">
+	<tr>
+		<td valign="bottom" colspan="2">
+			<hr noshade>
+		</td>
+	</tr>
+	<tr>
+		<td align="left">
+			<span id="Footer_lblVersion" style="font-size:8pt;">[sid:10194833] [ui:Version 7.2.0.s.215] [db:7.1]</span>
+		</td>
+		<TD ALIGN="right" nowrap>
+			<P CLASS="small">
+				
+					<A HREF="http://www.elections.ca/content.asp?section=pri&amp;document=pri&amp;lang=e&amp;textonly=false">
+					Privacy Statement, Important Notices and Disclaimers </A>
+				
+			</P>
+		</TD>
+	</tr>
+</table>
+<!--*END FOOTER TABLE*-->
+<BR>
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWywECj+GgNQLc6bvsAQK6o6qoDQKzprjvBQKX4YrVDgL1mpiRBQLr2/jcCwK2sLbxDQKNt+fpDgKaqdSlBQLl0K2XCgKJ093FBALQqPCzAQKG5pGKDwLVmbGBDgKOmpzJDALEzMZ6Ase4jp8GAriR9G8CjZnf2wQCibnM0QYCg/38kQUCjZmn0AECzNWYXQLnoNT7BAKUq6/wBwLC++iYCQLJt5uuBAKHtYyhAQKAgKWXDwLKtrOhCAKozMq6BALI4ZHhBwLKtqOrCAKfnLr6AwLSnp/sCQKSq6evBALqit+qDwLC/cKmDgLWnITKAQLL9ZGpAQL28vyRBQL98vyRBQKswrOYDAKS2piqCwLN4fmXDwLjnqvSAgLrjraZAQLMrvj6BQLdz5uOAgLchrTOCgKP1c6ZAwKP1eKtAQKn0+WjDAKpq5v3BgKvoKj0DgLXl9hnAvTNy+ILAtDdsCACpIOthAkCy5bs8AUCm93qmQsClb3DngYCn46bkQMCn6nUnAMC6OCJ2g4C+LGn6g4CkPqSlwYCnpjLjQgC3vziqQsC6pzwzwECpM/2iAgCn5ib1wsCt+DhjAgC7PWR7g4C7pnr5AcC8pvBsgYC1c7m3gECvsOS0g0C1eDmoQoCqJeq6wgCqMzM1wYC88qyrAECtNGJlQUChpvDuwMCyo+q8goCktGlwwQClNHR1gEC95vsxgwCg5/T1wsCtYnk+w0CzbiKog8CweO8uAUCkqm7pQECzbiqog8Czbji0wQClbfruggCppHE0w4C9MqSrAEC6of9jQ8C7vClmwoCmMKGgggCj9uBlgUC44StmQ8Cp5GsnQ8C2/DsqwIC7POtxAYCoJWMZQLHq9v7CwL1rsz7BAL1ruzSAgKh+Z3rAwLC4qSCCQLDnPRuAr/ykIcKAuDEu5MFAv66lZMDArPBmmQCwJjH4wYCv8HuygoCiov0ngUCiovAnwUC9a6Q0wEChJyXygMCu6PbogEC4cSTqAQC4cTT+gkC0qOAiQICt7jy7Q0Czrrd0gEC9MbGegKojYDaBAKatL3hBgLsh/LYDwLmxJ/fBAKTkaG6BAK996TbCwLw2LWQDQKKmO+7AwKEmrbBDgKk+IfHCAK3uL6HCgLStPalDAKxgLDCBQKF+JCNDgKH8cSpCALtqpOZCQL6qru7BQK46YbDBwLbnbGdDgLV8ZrECgKnwe/eAQK+pMD0CwKY6PbpCAK/wLJuArbA6p8IAonxsNkCAqO3nfMHAv3KzpkDAvrE98QIAo6Yg9UOAs+WkUcCiNbRnAUC/4CBtw8Cwo6d2AIC8sqGiQgC85ucyQwC68P+lw8CrZHUsggCyLiengYCp66hswwCy6zqmwoCoMLJjgwC1KzqmwoCqcLJjgwC1KyWmAoCqcL18wwC1KzOmAoCqcKt8gwC2azqmwoCvsLJjgwC2ayWmAoCvsL18wwC2azOmAoCvsKt8gwC3azqmwoCssLJjgwC3dzB1wkC74/GxQgC9o+ywQYCyI/OxwgC+Y/SxggCl4/Spg4Cs4/uJQLUjsqeAQLNjobpCALUjuL8AgL0jvqgCgKcjqLAAwKcjsrECAKdjs7HCAKDqpGpAgLi346iCisrbOYvTM8zqE+ORrLLfUu3DrtG" />
+</div>
+<script language=javascript>document.getElementById('myAddressSearch_txtCivicNumber').focus(); </script></form>
+	</BODY>
+</HTML>
