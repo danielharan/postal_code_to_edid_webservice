@@ -10,9 +10,9 @@ module EdidSources
       if match = search_results.uri.to_s.match(/&ED=(\d+)&/)
         [match[1]]
       elsif search_results.content =~ /Your postal code information did not identify a valid electoral district/i
-        []
+       nil
       elsif search_results.content =~ /Your postal code identified more than one electoral district/i
-        ["multiple", search_results.uri]
+        []
       else
         raise "error scraping page for postal code: #{postal_code}"
       end
