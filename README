@@ -4,14 +4,13 @@ Want to help users find out who their MP is based on postal code?
 
 http://postal-code-to-edid-webservice.heroku.com/postal_codes/A1A1A1
 
-returns: {"code":"A1A1A1","edid":"10007"}
+returns JSON: ["10007"]
 
 For testing you can also try with:
-  H0H0H0 (invalid. Shh, don't tell any kids)
-  T5S2B9 (empty array)
+  H0H0H0 {"error" => "Postal code invalid"}
+  T5S2B9 {"error" => "Postal code could not be resolved", 
+          "link"  => http://www.elections.ca/scripts/pss/FindED.aspx?PC=T5S2B9&image.x=0&image.y=0}
 
-In cases where an empty array is returned, it means it couldn't resolve, *but the code is valid*. In those cases you can redirect users to this URL:
-
-http://www.elections.ca/scripts/pss/FindED.aspx?PC=#{POSTAL_CODE}&image.x=0&image.y=0
+In the last cases we couldn't resolve, *but the code is valid*. For now, the provided link can help users for that < 1% of postal codes find their MP.
 
 Let me know if you have any issues.

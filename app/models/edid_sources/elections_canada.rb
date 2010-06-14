@@ -2,7 +2,7 @@ require 'mechanize'
 
 module EdidSources
   class ElectionsCanada
-    def self.edid_for(postal_code)
+    def self.edids_for(postal_code)
       postal_code.sub! ' ', '' # done in javascript on the site, "A1A1A1" is OK, "A1A 1A1" is NOT
 
       search_results = scrape(postal_code)
@@ -10,7 +10,7 @@ module EdidSources
       if match = search_results.uri.to_s.match(/&ED=(\d+)&/)
         [match[1]]
       elsif search_results.content =~ /Your postal code information did not identify a valid electoral district/i
-       nil
+       [nil]
       elsif search_results.content =~ /Your postal code identified more than one electoral district/i
         []
       else

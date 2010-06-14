@@ -3,20 +3,17 @@ class PostalCode < ActiveRecord::Base
   
   has_many :postal_code_assignments
   
-  def edid
-    assignment = if (assigned = postal_code_assignments).length > 0
-      assigned.first
-    else
-      scrape(code)
-    end
+  def edids
+    scrape(code) unless postal_code_assignments.length > 0
     
-    {:code => code, :edid => assignment.edid}
+    postal_code_assignments.collect(&:edid)
   end
   
   def scrape(code)
-    edid = EdidSources::ElectionsCanada.edid_for(code)
-    postal_code_assignments.create :source_id          => Source.find_by_name("Elections Canada"),
-                                   :electoral_district => ElectoralDistrict.find_or_create_by_edid(edid)
+    EdidSources::ElectionsCanada.edids_for(code).each do |edid|
+      postal_code_assignments.create :source_id          => Source.find_by_name("Elections Canada"),
+                                     :electoral_district => ElectoralDistrict.find_or_create_by_edid(edid)
+    end
   end
   
   class << self
