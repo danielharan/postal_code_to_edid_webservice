@@ -1,5 +1,7 @@
 class PostalCodesController < ApplicationController
   def search
+    response.headers['Cache-Control'] = 'public, max-age=300'
+    
     code = PostalCode.find_or_create_via_api(params[:code])
     return not_found unless code.valid?
     
