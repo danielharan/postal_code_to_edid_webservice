@@ -9,7 +9,7 @@ returns JSON: ["10007"]
 For testing you can also try with:
   H0H0H0 {"error" => "Postal code invalid"}
   T5S2B9 {"error" => "Postal code could not be resolved", 
-          "link"  => http://www.elections.ca/scripts/pss/FindED.aspx?PC=T5S2B9&image.x=0&image.y=0}
+          "link"  => "http://www.elections.ca/scripts/pss/FindED.aspx?PC=T5S2B9&image.x=0&image.y=0"}
 
 In the last cases we couldn't resolve, *but the code is valid*. For now, the provided link can help users for that < 1% of postal codes find their MP.
 

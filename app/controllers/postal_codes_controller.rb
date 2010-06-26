@@ -7,7 +7,8 @@ class PostalCodesController < ApplicationController
     
     edids = code.edids
     if edids.empty?
-      render :json => {"error" => "Postal code could not be resolved"}, :layout => false
+      render :json => {"error" => "Postal code could not be resolved",
+        "link"  => "http://www.elections.ca/scripts/pss/FindED.aspx?PC=#{code.code}&amp;image.x=0&amp;image.y=0"}, :layout => false
     elsif edids.first.nil?
       return not_found
     else

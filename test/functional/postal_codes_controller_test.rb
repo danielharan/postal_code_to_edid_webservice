@@ -47,7 +47,7 @@ class PostalCodesControllerTest < ActionController::TestCase
     should_respond_with :success
     should_respond_with_content_type 'application/json'
     should "respond with error message" do
-      assert_equal({"error" => "Postal code could not be resolved"}, JSON.parse(@response.body))
+      assert_equal({"error" => "Postal code could not be resolved", "link"  => "http://www.elections.ca/scripts/pss/FindED.aspx?PC=T5S2B9&amp;image.x=0&amp;image.y=0"}, JSON.parse(@response.body))
     end
   end
 end
